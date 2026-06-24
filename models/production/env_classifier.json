@@ -1,0 +1,81 @@
+{
+  "production_bundle": "models/production/env_classifier.joblib",
+  "promoted_from": "models/baseline/rf_phase1_retrain_optical12.joblib",
+  "promoted_at": "2026-04-25",
+  "train_command_note": "Same bundle as baseline; rsync env_classifier.joblib to RPi for deploy.",
+  "ml_gate_reference": {
+    "holdout_eval": "tools/threshold_sweep.py on data/training/from_logs_test.jsonl (2113 rows)",
+    "top1_tau_0.62": {
+      "macro_f1_night_ovr": 0.9835,
+      "abstention_rate": 0.1278
+    },
+    "top1_tau_0.65_alternative": {
+      "macro_f1_night_ovr": 0.9866,
+      "abstention_rate": 0.1491
+    },
+    "config_choice": "ml_confidence_threshold=0.62 balances night F1 vs rule fallback; optional 0.65 for stricter gating.",
+    "top2_tau_0.20": {
+      "source": "tools/secondary_threshold_sweep.py, tau1=0.62, from_logs_test.jsonl",
+      "p2_percentiles_given_p1_ge_tau1": { "p50": 0.0313, "p90": 0.2022, "p75": 0.1058 },
+      "hint_rate_of_ml_active": 0.0472,
+      "n_ml_active": 1843
+    },
+    "top2_alternatives": { "0.22_hint_rate": 0.0336, "0.25_hint_rate": 0.0212 },
+    "config_choice_top2": "0.20 ≈ P90(p2|p1>=0.62); see docs/tables/ML_GATE_RATIONALE.md"
+  },
+  "cv_balanced_accuracy_mean": 0.7407809700218861,
+  "cv_balanced_accuracy_std": 0.03312588512380203,
+  "train_balanced_accuracy": 0.9508898398016628,
+  "n_samples": 14094,
+  "n_features": 12,
+  "cv_folds": 5,
+  "cv_strategy": "TimeSeriesSplit",
+  "calibration_method": "isotonic",
+  "feature_importances": {
+    "nir_mean_brightness": 0.12099945336148156,
+    "nir_std": 0.09867998386415981,
+    "nir_entropy": 0.06601896286143596,
+    "nir_p95": 0.07034049411620581,
+    "nir_glare_score": 0.0716603911776681,
+    "nir_sharpness": 0.12100119374299112,
+    "nir_dark_fraction": 0.11631824890089293,
+    "nir_saturation_mean": 0.23393552203938134,
+    "hour_of_day_sin": 0.0,
+    "hour_of_day_cos": 0.0,
+    "prev_env_class": 0.0,
+    "nir_blue_mean_ema": 0.1010457499357834
+  },
+  "training_mode": "optical_only",
+  "feature_set": [
+    "nir_mean_brightness",
+    "nir_std",
+    "nir_entropy",
+    "nir_p95",
+    "nir_glare_score",
+    "nir_sharpness",
+    "nir_dark_fraction",
+    "nir_saturation_mean",
+    "hour_of_day_sin",
+    "hour_of_day_cos",
+    "prev_env_class",
+    "nir_blue_mean_ema"
+  ],
+  "deploy_ready": true,
+  "notes": "Primary production model. Works on ALL hardware configs. Optical-only — no MI48 required.",
+  "ece_by_class": {
+    "night_clear": 0.017590006139080232,
+    "normal_night": 0.027821020467746836,
+    "normal_day": 0.04272478456886881,
+    "fog": 0.016294531318489517,
+    "rain": 0.03296745739474404,
+    "glare": 0.018494433868103913,
+    "backlight": 0.011862363165387984,
+    "transition": 0.021028248113950754,
+    "nir_night": 0.014518892015546578
+  },
+  "ece_by_night_class": {
+    "night_clear": 0.017590006139080232,
+    "normal_night": 0.027821020467746836,
+    "nir_night": 0.014518892015546578
+  }
+}

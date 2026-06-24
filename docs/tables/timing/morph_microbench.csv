@@ -1,0 +1,2 @@
+platform,python,ksize,n_iters,frame_shape,cv_erode_ms,cv_dilate_ms,scipy_min_ms,scipy_max_ms,has_scipy,recommendation
+arm64,3.12.12,5,200,240x320,0.0407,0.0405,1.2292,1.1815,True,OpenCV

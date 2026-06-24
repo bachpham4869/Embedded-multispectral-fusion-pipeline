@@ -1,0 +1,20 @@
+# Fusion Evidence Readiness
+
+- Strict paired rows: `584`
+- Pairing distribution: `frame_strict:584`
+- captured_runtime_fusion_available=false
+- Strict paired input evidence: yes.
+- Generated offline fusion evidence: yes, `fusion_source=paired_generated_fusion`.
+- Captured runtime fusion evidence: no.
+- Raw radiometric thermal evidence: no.
+- Thermal display/heatmap-like evidence: yes, `thermal_modality=display_heatmap_like`.
+- Stage latency evidence: no; paired timing is capture cadence/skew only.
+
+| artifact | evidence_type | n | metric_tier | pairing_tier | evidence_label | input_data_type | thermal_modality | fusion_source | captured_runtime_fusion_available | thesis_usability | caveat | missing_evidence | provenance_source |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| artifacts/paired_eval/strict_paired_manifest.csv | strict paired input manifest | 584 | Tier 1 | frame_strict:584 | real_paired | paired NIR video + thermal display/heatmap-like video | display_heatmap_like | none | false | strong for pairing/capture synchronization | Does not by itself prove fusion quality or alignment quality. | captured runtime fusion output and homography/alignment metadata | timestamps.csv, paired_data_run_manifest.json |
+| artifacts/paired_eval/nir_quality_metrics.csv | NIR no-reference IQA | 56064 | Tier 2 | frame_strict:584 | real_paired:56064 | paired NIR video + thermal display/heatmap-like video | display_heatmap_like | none | false | caveated | No-reference metrics are not ground-truth perceptual quality; forced buckets are not runtime bucket performance. | human/metadata bucket labels and runtime selected buckets | nir_quality_metrics.csv |
+| artifacts/paired_eval/thermal_quality_metrics.csv | thermal display/heatmap-like IQA | 12264 | Tier 2 | frame_strict:584 | real_paired:12264 | paired NIR video + thermal display/heatmap-like video | display_heatmap_like | none | false | caveated | thermal_modality=display_heatmap_like; not raw radiometric thermal. | raw numeric/radiometric thermal arrays | thermal_quality_metrics.csv |
+| artifacts/paired_eval/fusion_quality_metrics.csv | offline generated fusion comparison | 102200 | Tier 2,Tier 3 | frame_strict:584 | real_paired:102200 | paired NIR video + thermal display/heatmap-like video | display_heatmap_like | paired_generated_fusion | false | caveated/preliminary | paired_generated_fusion; not runtime-captured fusion validation. | captured runtime fusion frames from the live pipeline | fusion_quality_metrics.csv |
+| runtime captured fusion outputs | captured runtime fusion validation | 0 | not measured | frame_strict:584 |  | paired NIR video + thermal display/heatmap-like video | display_heatmap_like | none | false | not measured | captured_runtime_fusion_available=false | runtime fusion output path in paired sidecar/manifest | strict_paired_manifest.csv fusion_output_path |
+| artifacts/paired_eval/strict_paired_failure_cases.csv | failure-case diagnostics | 5428 | Tier 2,Tier 3 | frame_strict:584 | real_paired | paired NIR video + thermal display/heatmap-like video | display_heatmap_like | paired_generated_fusion | false | preliminary/limitations | Generated/proxy failures are diagnostic only, not proof of runtime fusion failure. | captured runtime fusion failure reproductions | strict_paired_failure_cases.csv |

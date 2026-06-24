@@ -1,0 +1,10 @@
+env_class,best_alpha,best_fused_log_rms,proxy_note
+backlight,0.3,0.45906,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"
+fog,0.3,0.9815,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"
+glare,0.3,1.04444,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"
+mixed_edge,0.3,0.9799,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"
+night_clear,0.3,0.80765,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"
+nir_night,0.3,1.81181,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"
+normal_day,0.3,1.06194,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"
+normal_night,0.3,1.04455,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"
+rain,0.3,1.37021,"PROXY — dummy thermal; best alpha = max IQA proxy, not task performance"

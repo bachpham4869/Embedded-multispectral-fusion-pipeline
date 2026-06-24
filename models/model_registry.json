@@ -1,0 +1,19 @@
+{
+  "production/env_classifier.joblib": {
+    "sha256": "00c4f0eecb6e7cc56b77cfea911c447e1f0e9448d0ec984ab9bc799c637d6b48",
+    "promoted_from": "rf_phase1_retrain_optical12.joblib",
+    "timestamp_iso": "2026-04-25T09:53:12"
+  },
+  "rf_optical_12.joblib": {
+    "sha256": "4808f61b796f862c5696705affb3925107287dbe8bc5ea9831c49be04f706c17",
+    "training_mode": "optical_only",
+    "sklearn_version": "1.8.0",
+    "timestamp_iso": "2026-04-27T14:47:03"
+  },
+  "rf_optical_9.joblib": {
+    "sha256": "e8509f2a773c0ece0de35b5dddb39cbd98ce65e91a97d60914fa0ed51b7bc2c5",
+    "training_mode": "optical_only_9",
+    "sklearn_version": "1.8.0",
+    "timestamp_iso": "2026-04-27T14:47:04"
+  }
+}

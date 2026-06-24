@@ -1,0 +1,105 @@
+# ── Local / IDE / secrets ─────────────────────────────────────────────────────
+.remember/
+.venv/
+.gitnexus/
+.claude/
+rsync.sh
+# ── Python build & cache ─────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+
+# ── Large local datasets (see data/README.md) ────────────────────────────────
+data/weather/
+data/thermal_optional/
+data/find-person-in-the-dark/
+data/thermal/
+fusion_captures/
+
+# Paired evaluation local datasets and generated artifacts
+data/paired_data/
+data/raw_sensor_captures/
+data/sensor_eval/
+data/training_v2/
+data/training_v3/
+data/training_v4/
+data/_candidate_datasets/
+data/sensor_eval/frames/
+data/**/frames/
+data/**/raw_frames/
+data/**/frame_dumps/
+artifacts/paired_eval/
+artifacts/runtime_paired_eval/
+artifacts/fusion_eval/
+artifacts/ml/
+artifacts/**/frames/
+artifacts/**/frame_dumps/
+artifacts/**/*.mp4
+artifacts/**/*.avi
+artifacts/**/*.mov
+artifacts/**/*.mkv
+q1_results/
+noisy_output_test/
+review_artifacts/
+.git_safety_snapshots/
+
+# Large media / datasets
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.npy
+*.npz
+*.h5
+*.hdf5
+
+# Model binaries
+*.joblib
+*.pkl
+*.pt
+*.pth
+*.onnx
+*.engine
+*.tflite
+
+
+# ── ML logs & artifacts (regenerate with offline_pipeline) ─────────────────────
+# No .gitkeep placeholders — dirs are created on first write; ignore content below.
+logs/
+
+# Model bundles (large; metrics *.json may still be tracked)
+models/**/*.joblib
+# Edge Impulse FOMO .tflite (copy locally from export; same artifact as legacy bundle)
+models/ei/*.tflite
+
+# ── scripts: utilities not shipped (keep README if present) ─────────────────
+scripts/*
+!scripts/README.md
+
+# ── Legacy staging (if recreated) ───────────────────────────────────────────────
+data/_staging/
+
+# -- Weekly report files ───────────────────────────────────────────────────────
+Thesis_report/
+weekly_report/
+HK252-DATN-142/
+weekly_report.md
+data/eval/nir_val/clahe_frames/
+notebooklm_handoff/
+HK252-DATN-142.zip
+HK252_DATN_20242.zip
+HK252_DATN_20242_V2.zip
+
+# ── Person in dark ───────────────────────────────────────────────────────────────
+person_in_dark-cpp-linux-v3-impulse-#2/
+person_in_dark-cpp-mcu-v2-impulse-#2/
+
+# ── Offline eval generated artefacts (large per-image files; summaries are committed) ────
+docs/eval/ei_person_find_in_dark/**/padilla_gt/
+docs/eval/ei_person_find_in_dark/**/per_image.csv

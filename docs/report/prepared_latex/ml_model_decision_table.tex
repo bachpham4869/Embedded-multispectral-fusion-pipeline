@@ -1,0 +1,18 @@
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\caption{Model decision summary for the current offline evidence freeze. Migration gates require user-confirmed sensor labels and target-hardware latency where applicable.}
+\label{tab:ch6-ml-model-decisions}
+\begin{tabularx}{\textwidth}{@{}lXXX@{}}
+\hline
+\textbf{Candidate} & \textbf{Evidence summary} & \textbf{Decision} & \textbf{Migration gate} \\
+\hline
+RF200 current config & Accuracy 0.8263, balanced accuracy 0.7463, macro-F1 0.7362 on the cluster-aware offline split. & Current offline accuracy baseline. & User-confirmed sensor labels and target-hardware latency. \\
+RF100 & Accuracy 0.8230, balanced accuracy 0.7415, macro-F1 0.7325. & Lightweight tree candidate. & Feature plus predict latency on Raspberry Pi 4 and user approval. \\
+ExtraTrees & Balanced accuracy 0.7386 and macro-F1 0.7149. & Not selected. & Reconsider only with sensor labels. \\
+HistGradientBoosting & Accuracy 0.8282, balanced accuracy 0.7096, macro-F1 0.7238. & Not selected for current production. & Needs class-balanced improvement. \\
+MLP family & Best variants remain more than three macro/balanced points below RF baselines. & Rejected for current production. & Reopen only if calibrated sensor-label evidence closes the gap. \\
+Feature v2 / 21-derived & Four-class subset shows modest signal. & Research candidate only. & Full 9-class coverage, schema versioning, latency, and user approval. \\
+\hline
+\end{tabularx}
+\end{table}

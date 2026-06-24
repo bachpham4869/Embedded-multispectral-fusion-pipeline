@@ -1,0 +1,4 @@
+split,macro_f1_night_ovr,abstention_rate,host,note
+optical_test_tau_0.62,0.9835,0.1278,Mac,Optical test set (visible spectrum); not NIR deployment
+optical_test_tau_0.65,0.9866,0.1491,Mac,Optical test set; alternative threshold
+nir_deployment_live,RPi4_PENDING,RPi4_PENDING,RPi4_PENDING,Live NIR sessions needed; domain shift from visible training UNVERIFIED

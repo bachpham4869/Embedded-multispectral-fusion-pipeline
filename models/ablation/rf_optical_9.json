@@ -1,0 +1,45 @@
+{
+  "cv_balanced_accuracy_mean": 0.7320528117864362,
+  "cv_balanced_accuracy_std": 0.02119074946100373,
+  "train_balanced_accuracy": 0.950620565093196,
+  "n_samples": 10182,
+  "n_features": 9,
+  "cv_folds": 5,
+  "cv_strategy": "TimeSeriesSplit",
+  "calibration_method": "isotonic",
+  "feature_importances": {
+    "nir_mean_brightness": 0.12729512385843667,
+    "nir_std": 0.1007774090634165,
+    "nir_entropy": 0.058883039019102086,
+    "nir_p95": 0.07228355237063641,
+    "nir_glare_score": 0.0650665070373486,
+    "nir_sharpness": 0.12325503581532248,
+    "nir_dark_fraction": 0.11609930158716854,
+    "nir_saturation_mean": 0.24255753506288968,
+    "nir_blue_mean_ema": 0.09378249618567906
+  },
+  "training_mode": "optical_only_9",
+  "feature_set": [
+    "nir_mean_brightness",
+    "nir_std",
+    "nir_entropy",
+    "nir_p95",
+    "nir_glare_score",
+    "nir_sharpness",
+    "nir_dark_fraction",
+    "nir_saturation_mean",
+    "nir_blue_mean_ema"
+  ],
+  "deploy_ready": false,
+  "notes": "Feature ablation: 9-feature optical-only dropping hour_of_day_sin/cos and prev_env_class (zero-importance features). Compare CV accuracy and ECE against optical_only (12 features) to document the feature selection choice. DO NOT deploy: 9-feature bundle fails EnvClassifier.feature_set validation.",
+  "ece_by_class": {
+    "night_clear": 0.01530846289557152,
+    "normal_night": 0.025637843643365073,
+    "nir_night": 0.009983847908232242
+  },
+  "ece_by_night_class": {
+    "night_clear": 0.01530846289557152,
+    "normal_night": 0.025637843643365073,
+    "nir_night": 0.009983847908232242
+  }
+}

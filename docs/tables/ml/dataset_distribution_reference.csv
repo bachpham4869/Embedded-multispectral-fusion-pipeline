@@ -1,0 +1,10 @@
+class,count,percentage,mean_label_confidence,top_sources,recommendation
+night_clear,2781,19.731801,0.800000,offline_darkface:2781,keep for current audit; still requires leakage and domain-shift checks
+normal_night,2347,16.652476,0.760000,offline_exdark_street:2347,keep for current audit; still requires leakage and domain-shift checks
+normal_day,2443,17.333617,0.795600,offline_weather_time:1891;offline_mwd:552,keep for current audit; still requires leakage and domain-shift checks
+fog,1542,10.940826,0.737808,offline_weather11:1542,keep for current audit; still requires leakage and domain-shift checks
+rain,1291,9.159926,0.900000,offline_weather_time:551;offline_weather11:526;offline_mwd:214,keep for current audit; still requires leakage and domain-shift checks
+glare,400,2.838087,0.780000,offline_glare_street:400,provisional: below support threshold; need more data or merge/drop review
+backlight,368,2.611040,0.780000,offline_backlight:368,provisional: below support threshold; need more data or merge/drop review
+transition,515,3.654037,0.784660,offline_mwd:357;offline_weather_time:158,provisional: verify as ENV class vs dawn_dusk_blend runtime state
+nir_night,2407,17.078189,0.800000,offline_gray_nir:2407,keep for current audit; still requires leakage and domain-shift checks

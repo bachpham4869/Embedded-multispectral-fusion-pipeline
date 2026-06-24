@@ -1,0 +1,108 @@
+{
+  "train": {
+    "n_images": 500,
+    "n_gt_positive": 500,
+    "n_gt_negative": 0,
+    "image_level_f1": {
+      "precision": 1.0,
+      "recall": 0.946,
+      "f1": 0.9723,
+      "tp": 473,
+      "fp": 0,
+      "fn": 27,
+      "wilson_ci_95": [
+        0.9226,
+        0.9626
+      ]
+    },
+    "centroid_hit": {
+      "precision": 1.0,
+      "recall": 0.942,
+      "f1": 0.9701,
+      "tp": 471,
+      "fp": 0,
+      "fn": 29,
+      "n_gt_positive_images": 500,
+      "wilson_ci_95": [
+        0.9179,
+        0.9593
+      ]
+    },
+    "latency_host_ms": {
+      "NOTE": "Mac-side latency; NOT comparable to RPi4 inference times",
+      "p50_ms": 0.18,
+      "p95_ms": 0.26,
+      "n_samples": 500
+    },
+    "score_histogram": {
+      "bins": [
+        0,
+        0,
+        122229,
+        1720,
+        790,
+        827,
+        1124,
+        1310,
+        0,
+        0
+      ],
+      "bin_edges": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ]
+    },
+    "mean_cell_activation_rate": 0.019
+  },
+  "params": {
+    "run_id": "baseline_train500_crop_t060",
+    "epoch_name": "epoch_00_raw_t060_crop_area",
+    "tflite_path": "person_in_dark-cpp-linux-v3-impulse-#2/tflite-model/tflite_learn_974465_7.tflite",
+    "tflite_sha256": "0aea3da7c25ce0bbfeb67e007635bb60b6342abb07fb3c93d12c11c0d56797cc",
+    "dataset_root": "data/find-person-in-the-dark/train/train",
+    "git_rev": "f9a4b1c9e8298ab25006bf01c5e70bb05da8bb72",
+    "threshold": 0.6,
+    "fit_mode": "crop",
+    "interp": "area",
+    "pipeline_lite_variant": "identity",
+    "metric_primary": "centroid_hit",
+    "limit": 500,
+    "argv": [
+      "tools/eval_ei_person.py",
+      "--tflite",
+      "person_in_dark-cpp-linux-v3-impulse-#2/tflite-model/tflite_learn_974465_7.tflite",
+      "--dataset",
+      "data/find-person-in-the-dark/train/train",
+      "--pass",
+      "raw",
+      "--threshold",
+      "0.6",
+      "--fit-mode",
+      "crop",
+      "--interp",
+      "area",
+      "--limit",
+      "500",
+      "--metric-primary",
+      "centroid_hit",
+      "--run-id",
+      "baseline_train500_crop_t060",
+      "--out",
+      "docs/eval/ei_person_find_in_dark/baseline_train500_crop_t060"
+    ],
+    "versions": {
+      "numpy": "1.26.4",
+      "opencv-python": "4.11.0.86",
+      "cv2": "4.11.0"
+    }
+  }
+}

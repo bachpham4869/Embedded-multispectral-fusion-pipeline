@@ -1,0 +1,57 @@
+{
+  "cv_balanced_accuracy_mean": 0.7407809700218861,
+  "cv_balanced_accuracy_std": 0.03312588512380203,
+  "train_balanced_accuracy": 0.9508898398016628,
+  "n_samples": 14094,
+  "n_features": 12,
+  "cv_folds": 5,
+  "cv_strategy": "TimeSeriesSplit",
+  "calibration_method": "isotonic",
+  "feature_importances": {
+    "nir_mean_brightness": 0.12099945336148156,
+    "nir_std": 0.09867998386415981,
+    "nir_entropy": 0.06601896286143596,
+    "nir_p95": 0.07034049411620581,
+    "nir_glare_score": 0.0716603911776681,
+    "nir_sharpness": 0.12100119374299112,
+    "nir_dark_fraction": 0.11631824890089293,
+    "nir_saturation_mean": 0.23393552203938134,
+    "hour_of_day_sin": 0.0,
+    "hour_of_day_cos": 0.0,
+    "prev_env_class": 0.0,
+    "nir_blue_mean_ema": 0.1010457499357834
+  },
+  "training_mode": "optical_only",
+  "feature_set": [
+    "nir_mean_brightness",
+    "nir_std",
+    "nir_entropy",
+    "nir_p95",
+    "nir_glare_score",
+    "nir_sharpness",
+    "nir_dark_fraction",
+    "nir_saturation_mean",
+    "hour_of_day_sin",
+    "hour_of_day_cos",
+    "prev_env_class",
+    "nir_blue_mean_ema"
+  ],
+  "deploy_ready": true,
+  "notes": "Primary production model. Works on ALL hardware configs. Optical-only \u2014 no MI48 required.",
+  "ece_by_class": {
+    "night_clear": 0.017590006139080232,
+    "normal_night": 0.027821020467746836,
+    "normal_day": 0.04272478456886881,
+    "fog": 0.016294531318489517,
+    "rain": 0.03296745739474404,
+    "glare": 0.018494433868103913,
+    "backlight": 0.011862363165387984,
+    "transition": 0.021028248113950754,
+    "nir_night": 0.014518892015546578
+  },
+  "ece_by_night_class": {
+    "night_clear": 0.017590006139080232,
+    "normal_night": 0.027821020467746836,
+    "nir_night": 0.014518892015546578
+  }
+}

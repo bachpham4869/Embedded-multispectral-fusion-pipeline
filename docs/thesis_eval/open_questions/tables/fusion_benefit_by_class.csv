@@ -1,0 +1,10 @@
+env_class,n_frames,mean_delta_log_rms,min_delta_log_rms,max_delta_log_rms,limitation
+backlight,25,-0.34633,-0.34678,-0.34487,PROXY — dummy thermal; negative delta expected; real benefit TBD
+fog,30,-0.29362,-0.33636,-0.16703,PROXY — dummy thermal; negative delta expected; real benefit TBD
+glare,30,-0.34338,-0.34646,-0.32405,PROXY — dummy thermal; negative delta expected; real benefit TBD
+mixed_edge,25,-0.34586,-0.34742,-0.34467,PROXY — dummy thermal; negative delta expected; real benefit TBD
+night_clear,40,-0.34507,-0.3474,-0.33839,PROXY — dummy thermal; negative delta expected; real benefit TBD
+nir_night,40,-0.3453,-0.34628,-0.34056,PROXY — dummy thermal; negative delta expected; real benefit TBD
+normal_day,20,-0.34211,-0.34672,-0.32515,PROXY — dummy thermal; negative delta expected; real benefit TBD
+normal_night,40,-0.34585,-0.3478,-0.34387,PROXY — dummy thermal; negative delta expected; real benefit TBD
+rain,20,-0.34409,-0.34643,-0.33551,PROXY — dummy thermal; negative delta expected; real benefit TBD

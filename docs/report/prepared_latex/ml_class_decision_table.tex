@@ -1,0 +1,21 @@
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\caption{ENV class decisions after offline and sensor-proxy evidence review. Sensor-domain rows are caveated because user-confirmed labels are not available.}
+\label{tab:ch6-ml-class-decisions}
+\begin{tabularx}{\textwidth}{@{}lXXX@{}}
+\hline
+\textbf{Class} & \textbf{Evidence summary} & \textbf{Decision} & \textbf{Caveat} \\
+\hline
+\texttt{normal\_day} & Strong offline support and raw sensor proxy presence. & Keep. & Raw labels remain agent-reviewed only. \\
+\texttt{normal\_night} & Strong offline support; paired proxy predictions mostly collapse here. & Keep. & Paired review suggests some rows may be backlit. \\
+\texttt{night\_clear} & Offline support exists. & Keep. & Needs night sensor capture. \\
+\texttt{nir\_night} & Offline support exists. & Keep provisional. & Requires confirmed NIR modality and manual labels. \\
+\texttt{fog} & Offline support and subset feature evidence exist. & Keep. & Needs targeted sensor labels. \\
+\texttt{rain} & Offline support and subset feature evidence exist. & Keep. & Needs targeted sensor labels. \\
+\texttt{glare} & Low-support but maps to a meaningful policy. & Keep provisional. & Needs targeted data and user-confirmed labels. \\
+\texttt{backlight} & Low-support but common in agent-reviewed sensor examples. & Keep provisional. & Do not overclaim until user review. \\
+\texttt{transition} & Offline support exists, but the concept remains ambiguous. & Treat as runtime transient candidate. & Do not claim strong dawn/dusk classification without labels. \\
+\hline
+\end{tabularx}
+\end{table}

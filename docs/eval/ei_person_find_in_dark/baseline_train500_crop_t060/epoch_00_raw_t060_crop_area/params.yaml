@@ -1,0 +1,14 @@
+run_id: 'baseline_train500_crop_t060'
+epoch_name: 'epoch_00_raw_t060_crop_area'
+tflite_path: 'person_in_dark-cpp-linux-v3-impulse-#2/tflite-model/tflite_learn_974465_7.tflite'
+tflite_sha256: '0aea3da7c25ce0bbfeb67e007635bb60b6342abb07fb3c93d12c11c0d56797cc'
+dataset_root: 'data/find-person-in-the-dark/train/train'
+git_rev: 'f9a4b1c9e8298ab25006bf01c5e70bb05da8bb72'
+threshold: 0.6
+fit_mode: 'crop'
+interp: 'area'
+pipeline_lite_variant: 'identity'
+metric_primary: 'centroid_hit'
+limit: 500
+argv: ["tools/eval_ei_person.py", "--tflite", "person_in_dark-cpp-linux-v3-impulse-#2/tflite-model/tflite_learn_974465_7.tflite", "--dataset", "data/find-person-in-the-dark/train/train", "--pass", "raw", "--threshold", "0.6", "--fit-mode", "crop", "--interp", "area", "--limit", "500", "--metric-primary", "centroid_hit", "--run-id", "baseline_train500_crop_t060", "--out", "docs/eval/ei_person_find_in_dark/baseline_train500_crop_t060"]
+versions: {"numpy": "1.26.4", "opencv-python": "4.11.0.86", "cv2": "4.11.0"}

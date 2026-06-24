@@ -1,0 +1,6 @@
+bucket,total_frames,share_pct,note
+A,32942,63.66,Aggregated across all available RPi4 sessions
+B,12912,24.95,Aggregated across all available RPi4 sessions
+C,349,0.67,Aggregated across all available RPi4 sessions
+D,540,1.04,Aggregated across all available RPi4 sessions
+RAW,5003,9.67,Aggregated across all available RPi4 sessions

@@ -1,0 +1,7 @@
+{
+  "raw_mean_diff": 11.17707709204249,
+  "raw_std_diff": 13.926814799563864,
+  "kalman_mean_diff": 6.020443306249731,
+  "kalman_std_diff": 3.30493402949651,
+  "improvement_pct": 46.13579868268082
+}

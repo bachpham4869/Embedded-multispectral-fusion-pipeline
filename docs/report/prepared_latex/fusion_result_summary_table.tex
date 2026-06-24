@@ -1,0 +1,18 @@
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\caption{Strict-paired generated fusion and image-processing evidence. Fusion rows use real paired inputs but generated offline outputs; they do not validate captured runtime fusion.}
+\label{tab:ch6-fusion-generated-summary}
+\begin{tabularx}{\textwidth}{@{}lrlXX@{}}
+\hline
+\textbf{Evaluation item} & \textbf{n} & \textbf{Tier} & \textbf{Result} & \textbf{Caveat} \\
+\hline
+NIR enhancement vs raw & 584 & Tier 2 & Entropy mean 5.709977; delta 1.028540; win rate 1.000000. & No-reference IQA; forced algorithm, not runtime bucket selection. \\
+Thermal display evaluation & 584 & Tier 2 & Dynamic range mean 157.376884. & Display/heatmap-like thermal, not raw radiometric thermal. \\
+Foreground-mask overlay vs alpha blend & 584 & Tier 3 & Foreground contrast gain mean 2.306456; delta 3.017641; win rate 1.000000. & Generated offline fusion, not runtime-captured fusion. \\
+Foreground-mask overlay edge density & 584 & Tier 2 & Edge-density mean 0.099519; delta 0.012231; win rate 0.958904. & Edge density can reward artifacts; interpret with caveat. \\
+Capture skew/cadence & 584 & Tier 1 & Frame-skew p95 48.473850 ms. & Supports capture pairing only, not spatial alignment or stage latency. \\
+Rain temporal median & 0 & not measured & Not measured. & No explicit rain/wet sequence evidence. \\
+\hline
+\end{tabularx}
+\end{table}

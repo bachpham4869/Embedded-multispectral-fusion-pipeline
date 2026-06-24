@@ -1,0 +1,3 @@
+mode,n_frames_simulated,transitions,transitions_per_min_proxy,limitation
+raw_argmax,2113,1812,51.45,ESTIMATED — from test JSONL label sequence; not live session data
+hysteresis_n3,2113,32,0.91,ESTIMATED — simulated 3-frame hysteresis on same sequence

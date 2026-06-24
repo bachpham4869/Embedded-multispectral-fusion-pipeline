@@ -1,0 +1,10 @@
+env_class,n_true,precision,recall,f1,ece,is_night_class
+night_clear,411,0.9878,0.983,0.9854,0.01759,True
+normal_night,310,0.9618,0.9742,0.9679,0.02782,True
+normal_day,307,0.9868,0.9707,0.9787,0.04272,False
+fog,187,0.9733,0.9733,0.9733,0.01629,False
+rain,147,0.979,0.9524,0.9655,0.03297,False
+glare,37,0.9474,0.973,0.96,0.01849,False
+backlight,45,0.88,0.9778,0.9263,0.01186,False
+transition,43,1.0,0.9767,0.9882,0.02103,False
+nir_night,356,0.9944,1.0,0.9972,0.01452,True

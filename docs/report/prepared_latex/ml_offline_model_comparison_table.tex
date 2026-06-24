@@ -1,0 +1,17 @@
+\begin{table}[!htbp]
+\centering
+\small
+\caption{Offline optical RGB-proxy model comparison on the duplicate-cluster-aware split. Metrics are not live NIR/LWIR validation; latency values are from the offline evaluation platform and must not be used as target-hardware deployment proof.}
+\label{tab:ch6-ml-cluster-aware-models}
+\begin{tabularx}{\textwidth}{@{}lrrrrX@{}}
+\hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Macro-F1} & \textbf{P95 ms} & \textbf{Decision note} \\
+\hline
+RF100 & 0.8230 & 0.7415 & 0.7325 & 16.522 & Lightweight tree candidate pending target-hardware latency. \\
+RF200 current config & 0.8263 & 0.7463 & 0.7362 & 17.017 & Current offline accuracy baseline. \\
+ExtraTrees & 0.8008 & 0.7386 & 0.7149 & 16.285 & Competitive balanced accuracy, weaker macro-F1 than RF200. \\
+HistGradientBoosting & 0.8282 & 0.7096 & 0.7238 & 31.402 & Strong accuracy, weaker balanced accuracy. \\
+MLP32 & 0.7941 & 0.6614 & 0.6758 & 0.112 & Fast proxy inference, but weaker class-balanced metrics. \\
+\hline
+\end{tabularx}
+\end{table}

@@ -1,0 +1,9 @@
+env_class,edge_case,omega,ds_w,ds_h,n,mean_log_rms_after,mean_pct_sat_after,mean_pct_crush_after,mean_delta_log_rms,p90_pct_crush_after,stopping_rule_pass
+night_clear,extreme_dark,0.55,160,120,5,0.941,0.0006,0.69017,0.0,0.99118,0
+night_clear,extreme_dark,0.55,200,150,5,0.941,0.0006,0.69017,0.0,0.99118,0
+night_clear,extreme_dark,0.7,160,120,5,0.941,0.0006,0.69017,0.0,0.99118,0
+night_clear,extreme_dark,0.7,200,150,5,0.941,0.0006,0.69017,0.0,0.99118,0
+night_clear,extreme_dark,0.85,160,120,5,0.941,0.0006,0.69017,0.0,0.99118,0
+night_clear,extreme_dark,0.85,200,150,5,0.941,0.0006,0.69017,0.0,0.99118,0
+night_clear,extreme_dark,0.92,160,120,5,0.941,0.0006,0.69017,0.0,0.99118,0
+night_clear,extreme_dark,0.92,200,150,5,0.941,0.0006,0.69017,0.0,0.99118,0

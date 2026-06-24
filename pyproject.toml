@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartbinocular"
+version = "0.1.0"
+description = "Real-time NIR + thermal fusion pipeline for night-vision binoculars (RPi4)"
+requires-python = ">=3.9"
+dependencies = [
+    # Pin to 1.x: Raspberry Pi OS apt packages (scipy, simplejpeg/picamera2) are ABI-built against NumPy 1.x.
+    # Lower bound 1.26: tested on dev (1.26.4); older 1.24/1.25 not verified with current feature schema.
+    "numpy>=1.26,<2",
+    # Full OpenCV (HighGUI): namedWindow/imshow are not in opencv-python-headless.
+    # Cap <4.13: 4.13+ wheels declare numpy>=2; we stay on NumPy 1.x for Pi OS scipy/picamera2.
+    "opencv-python>=4.8,<4.13",
+]
+
+[project.scripts]
+smartbinocular = "smartbinocular.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[project.optional-dependencies]
+# Install with: pip install -e ".[ml-tools]"
+ml-tools = [
+    "scikit-learn>=1.6,<1.9",   # tested 1.8.0; cap before potential 1.9 API changes
+    "matplotlib>=3.7",
+    "tqdm>=4.65",
+    "joblib>=1.5,<2",           # tested 1.5.3
+    "pyyaml>=6.0",
+]
+# TFLite runtime for the Edge Impulse person-in-dark experiment.
+# On RPi4 Bookworm: pip install tflite-runtime
+# Older RPi images: pip install --index-url https://www.piwheels.org/simple tflite-runtime
+# Or: sudo apt install python3-tflite-runtime
+ei = ["tflite-runtime"]
+# GPIO physical buttons (RPi4 only). Import-guarded in controls.py so Mac/CI never hard-fails.
+# Install with: pip install -e ".[gpio]"
+gpio = ["gpiozero>=1.6"]
+
+[tool.setuptools.package-data]
+smartbinocular = ["assets/*.json"]
+
+[dependency-groups]
+dev = [
+    "joblib>=1.5.3,<2",
+    "pyyaml>=6.0.3",
+    "scikit-learn>=1.6.1,<1.9",
+    "tqdm>=4.67.3",
+]

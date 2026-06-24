@@ -1,0 +1,18 @@
+\begin{table}[!htbp]
+\centering
+\footnotesize
+\caption{Per-bucket evidence status on strict paired inputs. Forced offline algorithm metrics are not runtime bucket-selection performance.}
+\label{tab:ch6-fusion-bucket-evidence}
+\begin{tabularx}{\textwidth}{@{}lrlXX@{}}
+\hline
+\textbf{Processing bucket} & \textbf{n} & \textbf{Status} & \textbf{Measured metrics} & \textbf{Caveat} \\
+\hline
+Night hybrid enhance & 584 & forced offline algorithm & Gradient, brightness, edge density, entropy, Laplacian variance. & Not runtime bucket performance. \\
+NIR mono CLAHE & 584 & forced offline algorithm & Gradient, brightness, edge density, entropy, Laplacian variance. & Not runtime bucket performance. \\
+Highlight tone map & 584 & forced offline algorithm & Gradient, brightness, edge density, entropy, Laplacian variance. & Not runtime bucket performance. \\
+Fog dehaze lite & 584 & forced offline algorithm & Gradient, brightness, edge density, entropy, Laplacian variance. & Not runtime bucket performance. \\
+Rain temporal median & 0 & not measured & None. & Requires rain/wet sequence evidence. \\
+Dawn/dusk blend & 0 & not measured & None. & Requires dawn/dusk metadata or confident visual evidence. \\
+\hline
+\end{tabularx}
+\end{table}

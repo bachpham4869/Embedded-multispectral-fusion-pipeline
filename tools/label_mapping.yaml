@@ -1,0 +1,206 @@
+# tools/label_mapping.yaml
+# Dataset label → SmartBinocular ENV class mapping.
+# Used by offline_pipeline.py to convert original dataset labels to ENV taxonomy.
+#
+# Fields per entry:
+#   env:        Target ENV class (str matching ENV_CLASSES) or null to skip record.
+#   confidence: Float [0,1] — label reliability estimate.
+#               Records with null env are skipped when --skip-null-labels is set.
+#
+# RULE: Only datasets WITHOUT original ENV labels use weak_heuristic.
+# Datasets with original labels (image2weather, weather_time, mwd, weather11)
+# use label_source = "dataset_original" (Constraint C9 from legacy/md/OFFLINE_ML_PLAN.md).
+
+# ── Image2Weather ─────────────────────────────────────────────────────────────
+# Layout: data/weather/image2weather/{ClassName}/*.jpg
+# Classes: Sunny, Cloudy, Rainy, Foggy, Snowy
+image2weather:
+  Sunny:
+    env: normal_day
+    confidence: 0.85
+  Cloudy:
+    env: normal_day
+    confidence: 0.75
+  Rainy:
+    env: rain
+    confidence: 0.90
+  Foggy:
+    env: fog
+    confidence: 0.90
+  Snowy:
+    env: null
+    # Skip: no matching ENV class; optionally map to rain if volume is needed
+
+# ── Weather-Time Classification with Road Images ──────────────────────────────
+# Layout: JSON annotations with {filename, period, weather}
+# period values: Morning, Afternoon, Dawn, Dusk, Night
+# weather values: Sunny, Cloudy, Rainy, Foggy, Snowy
+weather_time:
+  weather:
+    Sunny:
+      env: normal_day
+      confidence: 0.85
+    Cloudy:
+      env: normal_day
+      confidence: 0.75
+    Rainy:
+      env: rain
+      confidence: 0.90
+    Foggy:
+      env: fog
+      confidence: 0.90
+    Snowy:
+      env: null
+  period:
+    Morning:
+      env: normal_day
+      confidence: 0.85
+    Afternoon:
+      env: normal_day
+      confidence: 0.85
+    Dawn:
+      env: transition
+      confidence: 0.75
+    Dusk:
+      env: transition
+      confidence: 0.75
+    Night:
+      env: normal_night
+      confidence: 0.80
+  # Combined weather+period overrides (higher-priority, checked first):
+  # (weather, period) → env; if period is Night, override weather env
+  combined_overrides:
+    # Any weather at Night → normal_night (ambient urban light)
+    - match: {period: Night}
+      env: normal_night
+      confidence: 0.80
+    # Dawn/Dusk regardless of weather → transition
+    - match: {period: Dawn}
+      env: transition
+      confidence: 0.75
+    - match: {period: Dusk}
+      env: transition
+      confidence: 0.75
+
+# ── Multi-class Weather Dataset (MWD) ─────────────────────────────────────────
+# Layout: data/weather/mwd/ (ảnh thực tế trong dataset2/dataset2/) — {label}{n}.jpg
+# Label is encoded in the filename prefix: cloudy, rain, shine, sunrise
+mwd:
+  cloudy:
+    env: normal_day
+    confidence: 0.75
+  rain:
+    env: rain
+    confidence: 0.90
+  shine:
+    env: normal_day
+    confidence: 0.85
+  sunrise:
+    env: transition
+    confidence: 0.80
+
+# ── 11-Class Weather Dataset ──────────────────────────────────────────────────
+# Layout: data/weather/weather11/ (lớp trong dataset/{ClassName}/) — hoặc trỏ thẳng .../dataset
+# Folder names are lowercase (fogsmog, rain, sandstorm, etc.)
+weather11:
+  fogsmog:
+    env: fog
+    confidence: 0.85
+  rain:
+    env: rain
+    confidence: 0.90
+  sandstorm:
+    env: fog
+    confidence: 0.60   # visibility degradation — similar effect to fog
+  # All other classes → null (skip)
+  # lightning, glaze, hail, dew, rime, frost, rainbow, snow
+  lightning:
+    env: null
+  glaze:
+    env: null
+  hail:
+    env: null
+  dew:
+    env: null
+  rime:
+    env: null
+  frost:
+    env: null
+  rainbow:
+    env: null
+  snow:
+    env: null
+
+# ── Dark Face (folder-based → night_clear) ───────────────────────────────────
+# Layout: data/weather/darkface/image/*.png — synthetic key "all"
+# Very dark scenes; little ambient light → night_clear (not urban night).
+darkface:
+  all:
+    env: night_clear
+    confidence: 0.80
+
+# ── Backlight (flat images → backlight) ─────────────────────────────────────
+# Layout: data/weather/backlight/*.{jpg,JPG,...} — synthetic key "all"
+# Strong backlight / subject against bright background (dataset-original proxy).
+backlight:
+  all:
+    env: backlight
+    confidence: 0.78
+
+# ── Gray / IMX290 NIR-dominant night (field-collected mono) ───────────────────
+# Layout: data/weather/gray/**/*.{jpg,png,...} — synthetic key "all"
+# Dedicated ENV class `nir_night` for RF. If accuracy vs night_clear/normal_night is poor,
+# consider simple heuristics (computed offline on nir_gray, same as CORE features):
+#   - nir_night vs night_clear: higher nir_mean_brightness + nir_p95 when flood lit; lower nir_dark_fraction.
+#   - nir_night vs normal_night: often lower entropy (narrower histogram) or higher glare_score hotspots.
+#   - nir_night vs glare: glare_score / nir_p95 very high; use nir_glare_score threshold.
+#   - nir_night vs fog: nir_std and Laplacian sharpness often differ (fog → lower contrast).
+# Combine as score = w1*nir_dark_fraction + w2*nir_entropy + w3*nir_glare_score (fit weights on errors).
+gray_nir:
+  all:
+    env: nir_night
+    confidence: 0.80
+
+# ── ExDark street subset (Boat, Bus, Car, Motorbike → normal_night) ──────────
+# Layout: data/weather/ExDark/{Boat,Bus,Car,Motorbike}/...
+# Parser lowercases folder name for mapping keys below.
+exdark_street:
+  boat:
+    env: normal_night
+    confidence: 0.76
+  bus:
+    env: normal_night
+    confidence: 0.76
+  car:
+    env: normal_night
+    confidence: 0.76
+  motorbike:
+    env: normal_night
+    confidence: 0.76
+
+# ── Glare (street lights; pipeline skips any path with a "mask" folder segment)
+glare_street:
+  glare:
+    env: glare
+    confidence: 0.78
+
+# ── LLVIP NIR (Optional — heuristic only) ────────────────────────────────────
+# No ENV labels in dataset; ALL images are outdoor night NIR scenes.
+# Heuristic: LLVIP → weak_label = "night_clear" (outdoor night, no city lights).
+# DO NOT include in optical_only training without explicit --allow-weak-labels flag.
+llvip_nir:
+  __all__:
+    weak_label: night_clear
+    confidence: 0.60   # Low: no distinction between night_clear vs normal_night
+
+# ── KAIST (Optional — heuristic only) ─────────────────────────────────────────
+# RGB+LWIR pedestrian dataset; no ENV labels.
+# Heuristic based on sequence name / time-of-day tag in KAIST annotations.
+# Used only for rgb_thermal_ablation; deploy_ready = False.
+kaist:
+  __day__:
+    weak_label: normal_day
+    confidence: 0.65
+  __night__:
+    weak_label: normal_night
+    confidence: 0.65

@@ -1,0 +1,18 @@
+\begin{table}[!htbp]
+\centering
+\small
+\caption{Current evidence gates that bound the ML and fusion claims. These gaps define future validation work rather than negative final results.}
+\label{tab:ch7-evidence-gates}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\hline
+\textbf{Gate} & \textbf{Current status} & \textbf{Required next evidence} \\
+\hline
+User-confirmed sensor accuracy & Not measured. Raw and paired sensor runs are proxy behavior only. & User-confirmed labels for raw and paired sensor templates. \\
+Target-hardware ML latency & Not measured for RF100/RF200 feature plus predict path. & Raspberry Pi 4 feature extraction and inference timing. \\
+Captured runtime fusion & Not measured. Current fusion candidates are generated offline. & Runtime fusion output frames with sidecar metadata. \\
+Raw radiometric thermal & Not available. Thermal input is display/heatmap-like. & Raw numeric or radiometric thermal arrays. \\
+Spatial alignment quality & Homography/alignment metadata not measured. & Alignment metadata plus visual or geometric verification. \\
+Rain and dawn/dusk buckets & Not measured in current paired evidence. & Rain/wet sequences and dawn/dusk metadata or labels. \\
+\hline
+\end{tabularx}
+\end{table}

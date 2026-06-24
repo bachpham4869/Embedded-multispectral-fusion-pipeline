@@ -1,0 +1,10 @@
+env_class,edge_case,lo,hi,n,mean_blend_w,pct_genuinely_blended,mean_delta_log_rms,mean_pct_sat_after,mean_pct_crush_after,surrogate_mode,stopping_rule_pass
+night_clear,extreme_dark,0.1,0.4,5,0.0,0.0,-0.08449,0.03991,0.0,single_frame_ema_proxy,0
+night_clear,extreme_dark,0.1,0.45,5,0.0,0.0,-0.08246,0.03325,0.0,single_frame_ema_proxy,0
+night_clear,extreme_dark,0.1,0.55,5,0.0,0.0,-0.08215,0.03026,0.0,single_frame_ema_proxy,0
+night_clear,extreme_dark,0.15,0.4,5,0.0,0.0,-0.08179,0.02962,0.0,single_frame_ema_proxy,0
+night_clear,extreme_dark,0.15,0.45,5,0.0,0.0,-0.08196,0.02875,0.0,single_frame_ema_proxy,0
+night_clear,extreme_dark,0.15,0.55,5,0.0,0.0,-0.07801,0.02875,0.0,single_frame_ema_proxy,0
+night_clear,extreme_dark,0.2,0.4,5,0.0,0.0,-0.07801,0.02875,0.0,single_frame_ema_proxy,0
+night_clear,extreme_dark,0.2,0.45,5,0.0,0.0,-0.07805,0.02838,0.0,single_frame_ema_proxy,0
+night_clear,extreme_dark,0.2,0.55,5,0.0,0.0,-0.07805,0.02838,0.0,single_frame_ema_proxy,0
