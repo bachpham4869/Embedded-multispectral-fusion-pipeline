@@ -119,6 +119,7 @@ Anti-glare (C4): when high-percentile pixels exceed threshold, A1-lite tone mapp
 
 
 Mode 2 — Thermal (3DNR)
+
 <img width="731" height="396" alt="image" src="https://github.com/user-attachments/assets/4d469bb4-3001-4d74-9fe7-cd87494792d0" />
 
 Displays the MI48 thermal feed processed through:
