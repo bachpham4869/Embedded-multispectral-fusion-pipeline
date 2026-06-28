@@ -101,8 +101,10 @@ Key [ Q ]: Quit and save session metrics
 Left-click on the display to set the A1 bearing measurement probe point.
 ```
 # 5) Mode Descriptions : 
-```text
+
  Mode 1 — IMX (NIR)
+     <img width="875" height="300" alt="Screenshot 2026-05-09 204634" src="https://github.com/user-attachments/assets/2a02f2ce-056e-451a-8e9d-3b3be5fb4bda" />
+
 Displays the NIR camera feed. Automatic switching between raw and enhanced output based on a Schmitt trigger on the EMA brightness:
 
 Raw mode: when mean brightness ≥ 30.0 (configurable via nir_schmitt_raw_on)
@@ -114,9 +116,10 @@ Hysteresis prevents flickering at boundary values
 When in enhanced mode, HybridNIREnhancer applies: Dark/Bright Channel → Atmosphere Light estimation → Adaptive CLAHE → detail sharpening → color correction. In very dark conditions (night mode), the output is converted to grayscale for SNR boost.
 
 Anti-glare (C4): when high-percentile pixels exceed threshold, A1-lite tone mapping (gamma + highlight roll-off) is applied.
-```
-```text
+
+
 Mode 2 — Thermal (3DNR)
+<img width="731" height="396" alt="image" src="https://github.com/user-attachments/assets/4d469bb4-3001-4d74-9fe7-cd87494792d0" />
 
 Displays the MI48 thermal feed processed through:
 
@@ -131,7 +134,7 @@ Edge enhancement (Laplacian)
 Colormap (TURBO preferred, JET fallback)
 
 Warmup progress is shown on-screen. The thermal_display_raw_mix parameter blends raw detail back in to prevent over-smoothing.
-```
+
 ```text
 Mode 3 — Fusion (NIR + Thermal)
 NIR forms the background. Thermal heat map is:
