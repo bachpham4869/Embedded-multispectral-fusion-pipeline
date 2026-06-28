@@ -11,6 +11,8 @@ Real-time NIR + thermal fusion pipeline for a Raspberry Pi–based smart binocul
 | **Deploy / reproducibility** | Environment dependency synchronization, model production registry, and LAB luma gate controls |
 
 ## Hardware Requirements
+![Uploading Prototype_Binocular.jpg…]()
+
 
 - Raspberry Pi 4B (4GB+ recommended)
 - Senxor MI48 thermal sensor (SPI/I2C, 80×62, ~9 FPS)
